@@ -20,8 +20,11 @@ public class Main {
                 System.out.println("\n Конец работы парсера");
                 break;
             }
-            scanAddress.scanAddress(entry_str);
-            parseCSV.parse(entry_str);
+            if (scanAddress.scanAddress(entry_str)) {
+                parseCSV.parse(entry_str);
+            }
+            //scanAddress.scanAddress(entry_str);
+
         }
     }
 }

@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ParseCSV {
-    public void parse(String fileAddress) throws IOException {
+    public void parse(String fileAddress) throws IOException{
         //BufferedReader reader = new BufferedReader(new FileReader("test.csv"));
         BufferedReader reader = new BufferedReader(new FileReader(fileAddress));
 
