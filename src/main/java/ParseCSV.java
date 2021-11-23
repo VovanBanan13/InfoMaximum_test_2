@@ -1,6 +1,4 @@
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,12 +6,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ParseCSV {
-    public void parse(String fileAddress) throws IOException{
-        //BufferedReader reader = new BufferedReader(new FileReader("test.csv"));
+    public List<Item> parse(String fileAddress) throws IOException{
         BufferedReader reader = new BufferedReader(new FileReader(fileAddress));
 
-        String line = null;
-        Scanner scanner = null;
+        String line;
+        Scanner scanner;
         int index = 0;
         List<Item> itemList = new ArrayList<>();
 
@@ -38,9 +35,9 @@ public class ParseCSV {
             index = 0;
             itemList.add(item);
         }
-
         reader.close();
+        //System.out.println(itemList);
 
-        System.out.println(itemList);
+        return itemList;
     }
 }
