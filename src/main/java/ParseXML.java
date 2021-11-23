@@ -10,7 +10,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class ParseXML {
-    public List<Item> parse(String fileAddress) throws ParserConfigurationException, SAXException, IOException {
+    public List<Item> parseFull(String fileAddress) throws ParserConfigurationException, SAXException, IOException {
         List<Item> itemList = new ArrayList<>();
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
@@ -32,7 +32,28 @@ public class ParseXML {
             }
         };
         parser.parse(new File(fileAddress), handler);
-        //System.out.println(itemList);
+
+        return itemList;
+    }
+
+    public List<Item> parseHalf(String fileAddress) throws ParserConfigurationException, SAXException, IOException {
+        List<Item> itemList = new ArrayList<>();
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser parser = factory.newSAXParser();
+        DefaultHandler handler = new DefaultHandler() {
+            @Override
+            public void startElement(String uri, String localName, String qName, Attributes attributes) {
+                if (qName.equals("item")) {
+                    String city = attributes.getValue("city");
+                    int floor = Integer.parseInt(attributes.getValue("floor"));
+                    Item item = new Item();
+                    item.setCity(city);
+                    item.setFloor(floor);
+                    itemList.add(item);
+                }
+            }
+        };
+        parser.parse(new File(fileAddress), handler);
 
         return itemList;
     }

@@ -14,8 +14,8 @@ public class Main {
         Scanner console = new Scanner(System.in);
         System.out.println("\n Начало работы парсера");
         while (true) {
-            System.out.println("Чтобы выйти из приложения, введите 'exit'");
             System.out.println("Чтобы пропарсить файл, введите его путь");
+            System.out.println("Чтобы выйти из приложения, введите 'exit'");
             System.out.print("Ввод: ");
             entry_str = console.nextLine();
 
@@ -26,20 +26,16 @@ public class Main {
 
             if (scanAddress.isFile(entry_str)) {
                 if (scanAddress.isCSV(entry_str)) {
-                    //parseCSV.parse(entry_str);
-                    analysis.duplicate(parseCSV.parse(entry_str));
-                    analysis.showFloor(parseCSV.parse(entry_str));
+                    analysis.duplicate(parseCSV.parseFull(entry_str));
+                    analysis.showFloor(parseCSV.parseHalf(entry_str));
                 }
                 else if (scanAddress.isXML(entry_str)) {
-                    //parseXML.parse(entry_str);
-                    analysis.duplicate(parseXML.parse(entry_str));
-                    analysis.showFloor(parseXML.parse(entry_str));
+                    analysis.duplicate(parseXML.parseFull(entry_str));
+                    analysis.showFloor(parseXML.parseHalf(entry_str));
                 } else {
                     System.out.println("\nДолжно быть расширение CSV или XML\n");
                 }
-
             }
-
         }
     }
 }

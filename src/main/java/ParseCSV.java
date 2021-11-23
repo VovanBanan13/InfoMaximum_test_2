@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ParseCSV {
-    public List<Item> parse(String fileAddress) throws IOException{
+    public List<Item> parseFull(String fileAddress) throws NumberFormatException, IOException{
         BufferedReader reader = new BufferedReader(new FileReader(fileAddress));
 
         String line;
@@ -14,6 +14,7 @@ public class ParseCSV {
         int index = 0;
         List<Item> itemList = new ArrayList<>();
 
+        reader.readLine();
         while ((line = reader.readLine()) != null) {
             Item item = new Item();
             scanner = new Scanner(line);
@@ -36,7 +37,35 @@ public class ParseCSV {
             itemList.add(item);
         }
         reader.close();
-        //System.out.println(itemList);
+
+        return itemList;
+    }
+
+    public List<Item> parseHalf(String fileAddress) throws NumberFormatException, IOException{
+        BufferedReader reader = new BufferedReader(new FileReader(fileAddress));
+
+        String line;
+        Scanner scanner;
+        int index = 0;
+        List<Item> itemList = new ArrayList<>();
+
+        reader.readLine();
+        while ((line = reader.readLine()) != null) {
+            Item item = new Item();
+            scanner = new Scanner(line);
+            scanner.useDelimiter(";");
+            while (scanner.hasNext()) {
+                String data = scanner.next();
+                if (index == 0)
+                    item.setCity(data);
+                else if (index == 3)
+                    item.setFloor(Integer.parseInt(data));
+                index++;
+            }
+            index = 0;
+            itemList.add(item);
+        }
+        reader.close();
 
         return itemList;
     }

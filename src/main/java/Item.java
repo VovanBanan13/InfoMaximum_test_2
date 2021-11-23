@@ -7,37 +7,27 @@ public class Item {
     private int house;
     private int floor;
 
-    public String getCity() {
-        return city;
-    }
+    public String getCity() { return city; }
 
     public void setCity(String city) {
         this.city = city;
     }
 
-    public String getStreet() {
-        return street;
-    }
+    public String getStreet() { return street; }
 
     public void setStreet(String street) {
         this.street = street;
     }
 
-    public int getHouse() {
-        return house;
-    }
+    public int getHouse() { return house; }
 
     public void setHouse(int house) {
         this.house = house;
     }
 
-    public int getFloor() {
-        return floor;
-    }
+    public int getFloor() { return floor; }
 
-    public void setFloor(int floor) {
-        this.floor = floor;
-    }
+    public void setFloor(int floor) { this.floor = floor; }
 
     @Override
     public boolean equals(Object o) {
