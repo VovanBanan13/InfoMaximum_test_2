@@ -21,16 +21,11 @@ public class ParseCSV {
             scanner.useDelimiter(";");
             while (scanner.hasNext()) {
                 String data = scanner.next();
-                if (index == 0)
-                    item.setCity(data);
-                else if (index == 1)
-                    item.setStreet(data);
-                else if (index == 2)
-                    item.setHouse(Integer.parseInt(data));
-                else if (index == 3)
-                    item.setFloor(Integer.parseInt(data));
-                else
-                    System.out.println("Некорректные данные:" + data);
+                if (index == 0) {item.setCity(data);}
+                else if (index == 1) {item.setStreet(data);}
+                else if (index == 2) {item.setHouse(Integer.parseInt(data));}
+                else if (index == 3) {item.setFloor(Integer.parseInt(data));}
+                else {System.out.println("Некорректные данные:" + data);}
                 index++;
             }
             index = 0;
@@ -56,10 +51,8 @@ public class ParseCSV {
             scanner.useDelimiter(";");
             while (scanner.hasNext()) {
                 String data = scanner.next();
-                if (index == 0)
-                    item.setCity(data);
-                else if (index == 3)
-                    item.setFloor(Integer.parseInt(data));
+                if (index == 0) {item.setCity(data);}
+                else if (index == 3) {item.setFloor(Integer.parseInt(data));}
                 index++;
             }
             index = 0;

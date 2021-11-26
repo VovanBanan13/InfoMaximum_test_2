@@ -10,6 +10,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class ParseXML {
+    private static final String item = "item";
+
     public List<Item> parseFull(String fileAddress) throws ParserConfigurationException, SAXException, IOException {
         List<Item> itemList = new ArrayList<>();
         SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -17,7 +19,7 @@ public class ParseXML {
         DefaultHandler handler = new DefaultHandler() {
             @Override
             public void startElement(String uri, String localName, String qName, Attributes attributes) {
-                if (qName.equals("item")) {
+                if (item.equals(qName)) {
                     String city = attributes.getValue("city");
                     String street = attributes.getValue("street");
                     int house = Integer.parseInt(attributes.getValue("house"));
@@ -43,7 +45,7 @@ public class ParseXML {
         DefaultHandler handler = new DefaultHandler() {
             @Override
             public void startElement(String uri, String localName, String qName, Attributes attributes) {
-                if (qName.equals("item")) {
+                if (item.equals(qName)) {
                     String city = attributes.getValue("city");
                     int floor = Integer.parseInt(attributes.getValue("floor"));
                     Item item = new Item();
