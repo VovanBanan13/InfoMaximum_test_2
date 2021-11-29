@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ParseCSV {
+public class ParseCSV implements Parse {
     public List<Item> parseFull(String fileAddress) throws NumberFormatException, IOException{
         BufferedReader reader = new BufferedReader(new FileReader(fileAddress));
 
