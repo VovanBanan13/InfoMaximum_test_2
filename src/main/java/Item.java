@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Item {
+public class Item implements Comparable<Item>{
 
     private String city;
     private String street;
@@ -27,6 +27,11 @@ public class Item {
 
     public int getFloor() { return floor; }
 
+    public String getFloorString() {
+        String floorStr = String.valueOf(floor);
+        return floorStr;
+    }
+
     public void setFloor(int floor) { this.floor = floor; }
 
     @Override
@@ -40,6 +45,16 @@ public class Item {
     @Override
     public int hashCode() {
         return Objects.hash(city, street, house, floor);
+    }
+
+    @Override
+    public int compareTo(Item o) {
+        int result = this.getCity().compareTo(o.getCity());
+
+        if (result == 0)
+            result = this.getFloor() - o.getFloor();
+
+        return result;
     }
 
     @Override
