@@ -23,22 +23,20 @@ public class Main {
                 break;
             }
 
-            parse = new ParseCSV();
-            analysis.listToSet(parse.parseHalf(entryStr));
-//            if (scanAddress.isFile(entryStr)) {
-//                if (scanAddress.isCSV(entryStr)) {
-//                    parse = new ParseCSV();
-//                    analysis.duplicate(parse.parseFull(entryStr));
-//                    analysis.showFloor(parse.parseHalf(entryStr));
-//                }
-//                else if (scanAddress.isXML(entryStr)) {
-//                    parse = new ParseXML();
-//                    analysis.duplicate(parse.parseFull(entryStr));
-//                    analysis.showFloor(parse.parseHalf(entryStr));
-//                } else {
-//                    System.out.println("\nНеверный формат файла. \nУкажите файл с расширением CSV или XML\n");
-//                }
-//            }
+            if (scanAddress.isFile(entryStr)) {
+                if (scanAddress.isCSV(entryStr)) {
+                    parse = new ParseCSV();
+                    analysis.duplicate(parse.parseFull(entryStr));
+                    analysis.showFloor(parse.parseHalf(entryStr));
+                }
+                else if (scanAddress.isXML(entryStr)) {
+                    parse = new ParseXML();
+                    analysis.duplicate(parse.parseFull(entryStr));
+                    analysis.showFloor(parse.parseHalf(entryStr));
+                } else {
+                    System.out.println("\nНеверный формат файла. \nУкажите файл с расширением CSV или XML\n");
+                }
+            }
         }
     }
 }
